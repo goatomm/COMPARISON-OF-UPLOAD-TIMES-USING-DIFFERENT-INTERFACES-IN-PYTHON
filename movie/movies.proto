@@ -1,0 +1,20 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+package Movies;
+
+message Movie {
+  int32 id = 1;
+  string title = 2;
+  string description = 3;
+  int32 director_id = 4;
+  int32 genre_id = 5;
+}
+
+service MoviesService {
+  rpc get_movies (google.protobuf.Empty) returns (stream Movie);
+  rpc get_movie (MovieId) returns (Movie);
+}
+
+message MovieId {
+  int32 id = 1;
+}

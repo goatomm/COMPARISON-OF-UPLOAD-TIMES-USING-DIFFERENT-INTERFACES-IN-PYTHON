@@ -1,0 +1,17 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+package genres;
+
+message Genre {
+  int32 id = 1;
+  string name = 2;
+}
+
+service GenresService {
+  rpc get_genres (google.protobuf.Empty) returns (stream Genre);
+  rpc get_genre (GenreId) returns (Genre);
+}
+
+message GenreId {
+  int32 id = 1;
+}
